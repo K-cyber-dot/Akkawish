@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Birthday Letter🎉🎂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px; /* add some top and side padding */
+      background: linear-gradient(135deg, #ffc0cb, #ffdde1);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; /* start from top for scroll */
+      position: relative;
+      min-height: 200vh;
+    }
+
+    .top-heading {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8em;
+      color: #d81b60;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 40px;
+      user-select: none;
+    }
+
+    .envelope {
+      position: relative;
+      width: 300px;
+      height: 320px;
+      background: #fff;
+      border: 2px solid #e91e63;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.5s ease;
+      z-index: 10;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      margin-bottom: 25px; /* spacing below envelope */
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      border-width: 0 150px 100px 150px;
+      border-style: solid;
+      border-color: transparent transparent #fff transparent;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .envelope.opened {
+      transform: translateY(-180%);
+    }
+
+    .envelope img.sticker {
+      width: 200px;
+      height: auto;
+      max-height: 140px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .click-text {
+      margin-top: 10px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #c2185b;
+      animation: blink 1s infinite;
+      user-select: none;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .message {
+      position: relative; /* changed from absolute */
+      top: auto;
+      left: auto;
+      transform: none !important;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      background: #fff0f6;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: opacity 0.6s ease, max-height 0.6s ease;
+      z-index: 5;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+      font-weight: 500;
+      user-select: text;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.5;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    .message.show {
+      opacity: 1;
+      max-height: 2000px; /* large enough to reveal content */
+    }
+
+    .message h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8em;
+      color: #d81b60;
+      margin: 0 0 15px;
+      user-select: none;
+    }
+
+    .message p {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 10px;
+    max-height: auto;
+  }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(-45deg);
+      animation: float 6s infinite ease-in;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(-45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* QR code container */
+    .qr-container {
+      margin-top: 50px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .qr-container h2 {
+      color: #d81b60;
+      font-family: 'Dancing Script', cursive;
+      margin-bottom: 20px;
+    }
+
+    .qr-container img {
+      border: 4px solid #d81b60;
+      border-radius: 15px;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-heading">Happy Birthday DEEPA AKKA 🎉❤️</div>
+
+  <div class="envelope" id="envelope" role="button" tabindex="0" aria-pressed="false" aria-label="Open Birthday Letter">
+    <img
+      class="sticker"
+      src="IMG2.png.jpg"
+      alt="Birthday Boy Image"
+      draggable="false"
+    />
+    <div class="click-text">Click Here 🎈</div>
+  </div>
+
+  <div class="message" id="message" aria-live="polite" aria-atomic="true">
+    <h1>Happy Birthday AKKA ❤️🎂</h1>
+Wishing you all the happiness, love, and success. May your day be filled with smiles and warm hugs! 😊 Iniki unga birthday unga kuda enala iruka mudila, but I had all thinks about only U. miss u more and I wish you more happiness in your face this year... I wanna pray to God 🙏✨</br></br>
+<p>Akka ungaluku epdi nu therla ennala mudila ka... Naa ithana days ungata pesama vena irrundhurukalam. But ungala nenaikama irrundhadhu illa😔.
+ 
+
+Romba oru marri irruku ka... Neenga gift vena nu sonna udaney... Adhuku reason unga parents ah soldreenga... Adha vittuten.
+
+
+ And then  enaku en hpy ah vida en akka hpy tha mukkiyam... Adhu na andha gift send pandra nala spoil ahum na adhu vena... 🤕. Adhu unga memory ah enkittavey irrukattum.
+ 
+
+But enna nu therla ka. Anniki nee unga v2la prob vandha neenga tha face pannanum nu sonnadhuku naa react panni2 vanten, But ennala inga normal ah irruka mudila.Enaku oru marri irrundhuchu avolothaalaa namma apdinu... 
+
+
+Enaku oru doubt ka... oru vela  naa tha ungala disturb pandren oh nuu... Bcs aniki naa react panni2 vandha aprm ipo varaikum neenga oru chinna txt kuda pannala. So virupam illa nu thana meaning. 
+
+
+No prob ka...  Naa unga lyf la illama irrundha tha neenga hpy naa adhuku kuda naa ready tha kaa... 🤕
+Neenga hpy ah irrundha podhum.</br>
+
+Anyways iniki unga b'daykl.so iniki neenga hpy ah irrukanumk,Njoy ur dayy & neenga eppavum neenga hpy ah irrukanum kaa... Tata byee.</br>
+
+
+Piriya manam illamal...
+piriya vendiya soolzhalil...  </br>     
+
+                                          Naan🙂
+        
+    </p>
+  </div>
+
+  <audio id="birthdayMusic" src="https://cdn.pixabay.com/download/audio/2021/09/05/audio_2b18b7a54e.mp3?filename=happy-birthday-7-5901.mp3" preload="auto"></audio>
+
+  <div class="qr-container">
+    <h2>Scan to open this birthday letter 📱</h2>
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com/birthday-letter.html"
+      alt="QR Code to Birthday Letter"
+      draggable="false"
+    />
+  </div>
+
+  <script>
+    const envelope = document.getElementById("envelope");
+    const message = document.getElementById("message");
+    const music = document.getElementById("birthdayMusic");
+    let opened = false;
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+
+    envelope.addEventListener("click", () => {
+      if (!opened) {
+        envelope.classList.add("opened");
+        message.classList.add("show");
+        music.play();
+        opened = true;
+        envelope.setAttribute("aria-pressed", "true");
+      }
+    });
+
+    // Keyboard accessibility: open envelope with Enter or Space
+    envelope.addEventListener("keydown", (e) => {
+      if ((e.key === "Enter" || e.key === " ") && !opened) {
+        e.preventDefault();
+        envelope.click();
+      }
+    });
+  </script>
+</body>
+</html>
